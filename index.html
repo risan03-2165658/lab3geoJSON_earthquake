@@ -76,16 +76,16 @@
             'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            style: 'mapbox://styles/mapbox/light-v10', // style URL
             zoom: 5.5, // starting zoom
-            center: [138.043, 38] // starting center
+            center: [120.043, 24] // starting center
         });
 
 
         async function geojsonFetch() {
 
 
-            let response = await fetch('assets/earthquakes.geojson');
+            let response = await fetch('assets/taiwaneq.geojson');
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -94,13 +94,13 @@
             let earthquakes = await response.json();
 
 
-            response = await fetch('assets/japan.json');
+            response = await fetch('assets/taiwan.json');
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            let japan = await response.json();
+            let taiwan = await response.json();
 
 
             var table = document.getElementsByTagName("table");
@@ -147,15 +147,15 @@
                 });
 
 
-                map.addSource('japan', {
+                map.addSource('taiwan', {
                     type: 'geojson',
-                    data: japan
+                    data: taiwan
                 });
 
                 map.addLayer({
-                    'id': 'japan-layer',
+                    'id': 'taiwan-layer',
                     'type': 'fill',
-                    'source': 'japan',
+                    'source': 'taiwan',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
