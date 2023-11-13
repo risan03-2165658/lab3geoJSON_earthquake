@@ -1,76 +1,88 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Load data from an external GeoJSON file</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
 
-        #container {
-            display: flex;
-            height: 100vh;
-            flex-direction: row;
-            align-items: stretch;
-        }
-
-        #table {
-            flex-basis: 500px;
-            overflow-y: scroll;
-        }
-
-        #map {
-            flex-grow: 1;
-        }
-
-        button {
-            margin-bottom: 10px;
-        }
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 16px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-
-<body>
-    <main id="container">
-        <div id="table">
-
-            <h2>Earthquake List</h2>
-            <button onclick="sortTable()">Sort by Magnitude</button>
-            
-
-            <table>
-                <tr>
-                    <th>id</th>
-                    <th>magnitude</th>
-                    <th>timestamp</th>
-                </tr>
-            </table>
-
-        </div>
-        <div id="map"></div>
-
-    </main>
+    <head>
+        <meta charset="utf-8">
+        <title>Load data from an external GeoJSON file</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+    
+            #container {
+                display: flex;
+                height: 100vh;
+                flex-direction: row;
+                align-items: stretch;
+            }
+    
+            #table {
+                flex-basis: 500px;
+                overflow-y: scroll;
+            }
+    
+            #map {
+                flex-grow: 1;
+            }
+    
+            button {
+                margin-bottom: 10px;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 100%;
+                border: 1px solid #ddd;
+            }
+    
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+    
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+    
+            @media (max-width: 1024px) {
+                #table {
+                    display: none;
+                }
+    
+                #map {
+                    flex-grow: 1;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <main id="container">
+            <div id="table">
+    
+                <h2>Earthquake List</h2>
+                <button onclick="sortTable()">Sort by Magnitude</button>
+                
+    
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>magnitude</th>
+                        <th>timestamp</th>
+                    </tr>
+                </table>
+    
+            </div>
+            <div id="map"></div>
+    
+        </main>
+        
     <script>
         mapboxgl.accessToken =
             'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
